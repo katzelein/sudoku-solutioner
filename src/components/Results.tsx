@@ -1,10 +1,6 @@
-const Results = ({
-  isBoardValid,
-  hasAttemptedSolution,
-}: {
-  isBoardValid: boolean;
-  hasAttemptedSolution: boolean;
-}) => {
+import { ResultsProps } from "../types";
+
+const Results = ({ isBoardValid, hasAttemptedSolution }: ResultsProps) => {
   return (
     <>
       <img

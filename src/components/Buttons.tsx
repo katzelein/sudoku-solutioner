@@ -1,12 +1,10 @@
+import { ButtonsProps } from "../types";
+
 const Buttons = ({
   hasAttemptedSolution,
   checkBoard,
   clearBoard,
-}: {
-  hasAttemptedSolution: boolean;
-  checkBoard: () => void;
-  clearBoard: () => void;
-}) => {
+}: ButtonsProps) => {
   return (
     <div className="btn-actions">
       <button

@@ -5,28 +5,20 @@ import Results from "./Results";
 import Buttons from "./Buttons";
 import GameBoard from "./GameBoard";
 import { SudokuBoard } from "../types";
+import { updateBoard } from "../hooks";
 
 const emptyBoard: SudokuBoard = new Array(9).fill(new Array(9).fill(0));
 
 const App = () => {
-  const [board, setBoard] = React.useState(emptyBoard);
-  const [isBoardValid, setIsBoardValid] = React.useState(false);
-  const [hasAttemptedSolution, setHasAttemptedSolution] = React.useState(false);
+  const [board, setBoard] = React.useState<SudokuBoard>(emptyBoard);
+  const [isBoardValid, setIsBoardValid] = React.useState<boolean>(false);
+  const [hasAttemptedSolution, setHasAttemptedSolution] =
+    React.useState<boolean>(false);
 
   const addToBoard = (rowIndex: number, colIndex: number, value: number) => {
-    setBoard((previousBoard) => {
-      let rowToUpdate = previousBoard[rowIndex];
-      rowToUpdate = [
-        ...rowToUpdate.slice(0, colIndex),
-        value,
-        ...rowToUpdate.slice(colIndex + 1),
-      ];
-      return [
-        ...previousBoard.slice(0, rowIndex),
-        rowToUpdate,
-        ...previousBoard.slice(rowIndex + 1),
-      ];
-    });
+    setBoard((previousBoard) =>
+      updateBoard(previousBoard, rowIndex, colIndex, value)
+    );
   };
 
   const checkBoard = () => {

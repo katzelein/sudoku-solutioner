@@ -1,13 +1,7 @@
-import { SudokuBoard } from "../types";
+import { GameBoardProps } from "../types";
 import Node from "./Node";
 
-const GameBoard = ({
-  board,
-  addToBoard,
-}: {
-  board: SudokuBoard;
-  addToBoard: (rowIndex: number, columnIndex: number, value: number) => void;
-}) => {
+const GameBoard = ({ board, addToBoard }: GameBoardProps) => {
   return (
     <div id="board">
       {board.map((row: any, rowIndex: number) => (
