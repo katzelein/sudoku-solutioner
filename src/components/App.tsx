@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import { checkIfValid } from "../validation";
+import { isValidBoard } from "../state";
 import Results from "./Results";
 import Buttons from "./Buttons";
 import GameBoard from "./GameBoard";
+import { SudokuBoard } from "../types";
 
-const emptyBoard = new Array(9).fill(new Array(9).fill(0));
+const emptyBoard: SudokuBoard = new Array(9).fill(new Array(9).fill(0));
 
 const App = () => {
   const [board, setBoard] = React.useState(emptyBoard);
@@ -29,7 +30,7 @@ const App = () => {
   };
 
   const checkBoard = () => {
-    if (checkIfValid(board)) {
+    if (isValidBoard(board)) {
       setIsBoardValid(true);
     } else {
       setIsBoardValid(false);

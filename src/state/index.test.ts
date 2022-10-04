@@ -1,32 +1,6 @@
-import {
-  adjustInput,
-  checkValidColumns,
-  checkValidRows,
-  checkValidSquares,
-} from ".";
+import { allColumnsValid, allRowsValid, allSquaresValid } from ".";
 
-describe("adjustInput", () => {
-  test("it returns 0 for an empty input", () => {
-    expect(adjustInput("")).toEqual(0);
-  });
-  test("it returns 0 for a single letter", () => {
-    expect(adjustInput("e")).toEqual(0);
-  });
-  test("it returns 0 for a single special character", () => {
-    expect(adjustInput("?")).toEqual(0);
-  });
-  test("it preserves an existing number if a letter is entered after", () => {
-    expect(adjustInput("1f")).toEqual(1);
-  });
-  test("it replaces a first number with a second number if entered after", () => {
-    expect(adjustInput("37")).toEqual(7);
-  });
-  test("it returns the number for a regularly entered number", () => {
-    expect(adjustInput("9")).toEqual(9);
-  });
-});
-
-describe("checkValidRows", () => {
+describe("allRowsValid", () => {
   test("it returns false for an empty board", () => {
     const board = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -39,7 +13,7 @@ describe("checkValidRows", () => {
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
-    expect(checkValidRows(board)).toEqual(false);
+    expect(allRowsValid(board)).toEqual(false);
   });
   test("it returns false for a board with any 0 values in it", () => {
     const board = [
@@ -53,7 +27,7 @@ describe("checkValidRows", () => {
       [1, 5, 2, 8, 7, 3, 6, 9, 4],
       [1, 5, 2, 8, 7, 3, 6, 9, 4],
     ];
-    expect(checkValidRows(board)).toEqual(false);
+    expect(allRowsValid(board)).toEqual(false);
   });
   test("it returns false for any row with repeated values", () => {
     const board = [
@@ -67,7 +41,7 @@ describe("checkValidRows", () => {
       [1, 5, 2, 8, 7, 3, 6, 9, 4],
       [1, 5, 2, 8, 7, 3, 6, 9, 4],
     ];
-    expect(checkValidRows(board)).toEqual(false);
+    expect(allRowsValid(board)).toEqual(false);
   });
   test("it returns true for rows which have all values 1-9 with no repetitions", () => {
     const board = [
@@ -81,11 +55,11 @@ describe("checkValidRows", () => {
       [1, 5, 2, 8, 7, 3, 6, 9, 4],
       [1, 5, 2, 8, 7, 3, 6, 9, 4],
     ];
-    expect(checkValidRows(board)).toEqual(true);
+    expect(allRowsValid(board)).toEqual(true);
   });
 });
 
-describe("checkValidColumns", () => {
+describe("allColumnsValid", () => {
   test("it returns false for an empty board", () => {
     const board = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -98,7 +72,7 @@ describe("checkValidColumns", () => {
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
-    expect(checkValidColumns(board)).toEqual(false);
+    expect(allColumnsValid(board)).toEqual(false);
   });
   test("it returns false for a board with any 0 values in it", () => {
     const board = [
@@ -112,7 +86,7 @@ describe("checkValidColumns", () => {
       [9, 9, 9, 9, 9, 9, 9, 9, 9],
       [4, 4, 4, 4, 4, 4, 4, 4, 4],
     ];
-    expect(checkValidColumns(board)).toEqual(false);
+    expect(allColumnsValid(board)).toEqual(false);
   });
   test("it returns false for any column with repeated values", () => {
     const board = [
@@ -126,7 +100,7 @@ describe("checkValidColumns", () => {
       [9, 9, 9, 9, 9, 9, 9, 9, 9],
       [4, 4, 4, 4, 4, 4, 4, 4, 4],
     ];
-    expect(checkValidColumns(board)).toEqual(false);
+    expect(allColumnsValid(board)).toEqual(false);
   });
   test("it returns true for columns which have all values 1-9 with no repetitions", () => {
     const board = [
@@ -140,11 +114,11 @@ describe("checkValidColumns", () => {
       [9, 9, 9, 9, 9, 9, 9, 9, 9],
       [4, 4, 4, 4, 4, 4, 4, 4, 4],
     ];
-    expect(checkValidColumns(board)).toEqual(true);
+    expect(allColumnsValid(board)).toEqual(true);
   });
 });
 
-describe("checkValidSquares", () => {
+describe("allSquaresValid", () => {
   test("it returns false for an empty board", () => {
     const board = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -157,7 +131,7 @@ describe("checkValidSquares", () => {
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
-    expect(checkValidSquares(board)).toEqual(false);
+    expect(allSquaresValid(board)).toEqual(false);
   });
   test("it returns false for a board with any 0 values in it", () => {
     const board = [
@@ -171,7 +145,7 @@ describe("checkValidSquares", () => {
       [6, 7, 8, 9, 1, 2, 3, 4, 5],
       [9, 1, 2, 3, 4, 5, 6, 7, 8],
     ];
-    expect(checkValidSquares(board)).toEqual(false);
+    expect(allSquaresValid(board)).toEqual(false);
   });
   test("it returns false for any square with repeated values", () => {
     const board = [
@@ -185,7 +159,7 @@ describe("checkValidSquares", () => {
       [6, 7, 8, 9, 1, 2, 3, 4, 5],
       [9, 1, 2, 3, 4, 5, 6, 7, 8],
     ];
-    expect(checkValidSquares(board)).toEqual(false);
+    expect(allSquaresValid(board)).toEqual(false);
   });
   test("it returns true for squares which have all values 1-9 with no repetitions", () => {
     const board = [
@@ -199,6 +173,6 @@ describe("checkValidSquares", () => {
       [6, 7, 8, 9, 1, 2, 3, 4, 5],
       [9, 1, 2, 3, 4, 5, 6, 7, 8],
     ];
-    expect(checkValidSquares(board)).toEqual(true);
+    expect(allSquaresValid(board)).toEqual(true);
   });
 });

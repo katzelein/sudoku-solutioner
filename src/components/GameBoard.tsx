@@ -1,10 +1,11 @@
+import { SudokuBoard } from "../types";
 import Node from "./Node";
 
 const GameBoard = ({
   board,
   addToBoard,
 }: {
-  board: number[][];
+  board: SudokuBoard;
   addToBoard: (rowIndex: number, columnIndex: number, value: number) => void;
 }) => {
   return (
